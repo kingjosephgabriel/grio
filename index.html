@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GRIO Services — Finished technical files, fixed price</title>
-<meta name="description" content="GRIO delivers finished simulation packs, circuits, CAD, graphics, websites, catalogues and WhatsApp automation. Fixed price, scoped in writing, source files included.">
+<meta name="description" content="GRIO delivers finished simulation packs, circuits, CAD, graphics, websites and catalogue sites. Scoped in writing, source files included.">
 <meta property="og:title" content="GRIO Services">
-<meta property="og:description" content="Finished technical files and small-business digital tools. Fixed price. Remote.">
+<meta property="og:description" content="Finished technical files and small-business digital tools. Remote.">
 <meta name="theme-color" content="#050705">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050705'/%3E%3Cpath d='M9 16a7 7 0 1 1 14 0h-7' fill='none' stroke='%2339ff6a' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,14 +70,20 @@ header.scrolled{border-color:var(--line)}
 .hero-side p{font-size:19px;color:var(--muted);max-width:420px;margin-bottom:28px}
 .hero-side p strong{color:var(--green);font-weight:600}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
-.hero-visual{margin-top:64px;position:relative;border-radius:28px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,#0b1a0f,#050705 60%);height:360px}
-.hero-visual svg.scene{position:absolute;inset:0;width:100%;height:100%}
-.hv-tag{position:absolute;padding:10px 14px;border-radius:12px;background:rgba(5,7,5,.85);border:1px solid var(--line-2);font-size:13px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(6px)}
-.hv-tag i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:pulse 2s infinite}
-.hv-1{left:28px;bottom:28px}.hv-2{right:28px;top:28px}.hv-3{right:28px;bottom:28px}
+.hero-visual{margin-top:64px;border-radius:28px;overflow:hidden;border:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.pane{display:flex;flex-direction:column;min-height:360px;background:radial-gradient(circle,#15251a 1px,transparent 1.2px) 0 0/18px 18px,linear-gradient(160deg,#0b1a0f,#050705 75%)}
+.pane-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(5,7,5,.6)}
+.pane-bar .mono{font-size:10.5px;letter-spacing:.1em}
+.pane-bar .tag{color:#031006;background:var(--green);padding:3px 7px;border-radius:5px;font-weight:600}
+.pane-bar .file{color:var(--muted);text-transform:none;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pane svg{flex:1;width:100%;height:100%;min-height:0}
+.pane-foot{display:flex;align-items:center;gap:10px;padding:11px 16px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+.pane-foot i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s infinite;flex:none}
+.pane text{font-family:var(--mono);font-size:9px;fill:var(--muted)}
+.pane text.hi{fill:var(--green)}
 @keyframes pulse{50%{opacity:.35}}
-.draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s cubic-bezier(.6,.1,.2,1) forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
+.flow{animation:flow 1.1s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-15}}
 
 /* marquee */
 .marquee{border-block:1px solid var(--line);background:var(--green);color:#031006;overflow:hidden;margin-top:72px}
@@ -127,26 +133,6 @@ section{padding:120px 0}
 .svc.feature p,.svc.feature .time{color:#0b3a17}
 .svc.feature h3{font-family:var(--display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:26px;line-height:1}
 
-/* packages */
-.cur{display:inline-flex;padding:5px;border:1px solid var(--line-2);border-radius:999px;gap:4px}
-.cur button{background:none;border:0;color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:.1em;padding:9px 16px;border-radius:999px;cursor:pointer;transition:all .2s}
-.cur button.on{background:var(--green);color:#031006}
-.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.pkg{border:1px solid var(--line);background:var(--panel);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:16px;transition:border-color .3s,transform .3s}
-.pkg:hover{border-color:var(--line-2);transform:translateY(-3px)}
-.pkg .name{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:24px;text-transform:uppercase;line-height:1}
-.pkg .price{font-family:var(--display);font-stretch:100%;font-weight:800;font-size:44px;line-height:1;color:var(--green)}
-.pkg .price small{font-size:15px;color:var(--muted);font-weight:500;margin-left:4px}
-.pkg p{color:var(--muted);font-size:15px}
-.pkg .for{font-size:13px;color:var(--muted-2);border-top:1px dashed var(--line-2);padding-top:14px;margin-top:auto}
-.pkg .for b{color:var(--text);font-weight:500}
-.pkg.hot{background:linear-gradient(160deg,#0f2a16,#07120a);border-color:var(--green);position:relative}
-.pkg.hot::before{content:"Default quote";position:absolute;top:-12px;left:30px;background:var(--green);color:#031006;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:6px}
-.pkg.wide{grid-column:span 2}
-.addons{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.addons .mono{color:var(--muted);margin-right:6px}
-.chip{border:1px solid var(--line-2);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--muted)}
-.chip b{color:var(--green);font-weight:600}
 
 /* process */
 #process{background:var(--green);color:#031006}
@@ -195,9 +181,9 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
 
 @media (max-width:980px){
   .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
-  .pkg-grid{grid-template-columns:1fr 1fr}.pkg.wide{grid-column:span 2}
   .steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0;margin-right:0}
   .promise{grid-template-columns:1fr}
+  .hero-visual{grid-template-columns:1fr}.pane{min-height:0}.pane svg{flex:none;height:auto}
 }
 @media (max-width:720px){
   .wrap{padding:0 16px}
@@ -205,17 +191,16 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
   .nav-links,.nav .btn{display:none}.burger{display:block}
   .mobile-menu.open{display:flex;flex-direction:column;gap:4px;padding:10px 16px 20px;border-top:1px solid var(--line)}
   .mobile-menu a{padding:12px 0;font-size:18px;border-bottom:1px solid var(--line)}
-  .hero{padding-top:56px}.hero-visual{height:260px;margin-top:44px}.hv-2{display:none}
+  .hero{padding-top:56px}.hero-visual{margin-top:44px}
   .about-quote,.about-body{padding:36px 24px}
   .svc-grid{grid-template-columns:1fr}
-  .pkg-grid{grid-template-columns:1fr}.pkg.wide{grid-column:auto}
   .steps{grid-template-columns:1fr}.step{border-right:0;margin-right:0;border-bottom:1px solid rgba(3,16,6,.2);padding:26px 0}
   .row2{grid-template-columns:1fr}form{padding:22px}
   .stats{grid-template-columns:1fr 1fr 1fr}.stat{padding:14px}.stat b{font-size:22px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .rv{opacity:1;transform:none}.draw{stroke-dashoffset:0}
+  .rv{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -228,7 +213,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
       GRIO
     </a>
     <nav class="nav-links" aria-label="Main">
-      <a href="#about">About</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#process">Process</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#services">Services</a><a href="#process">Process</a><a href="#contact">Contact</a>
     </nav>
     <a href="#contact" class="btn btn-g">Get a scope</a>
     <button class="burger" aria-label="Open menu" aria-expanded="false" id="burger">
@@ -236,7 +221,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
     </button>
   </div>
   <div class="mobile-menu" id="mmenu">
-    <a href="#about">About</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#process">Process</a><a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#services">Services</a><a href="#process">Process</a><a href="#contact">Contact</a>
   </div>
 </header>
 
@@ -245,9 +230,9 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
 <section class="hero" style="padding-bottom:0">
   <div class="wrap">
     <div class="hero-grid">
-      <h1 class="display rv">cad design<br>simulation<br><span class="g">html website</span><br><span class="outline">automations</span></h1>
+      <h1 class="display rv">Confusion<br>in.<br><span class="g">Clarity</span><br><span class="outline">out.</span></h1>
       <div class="hero-side rv">
-        <p>Simulation packs, circuits, CAD, graphics, catalogue sites and WhatsApp flows — <strong>fixed price, scoped in writing</strong>, closed with source files and a handover note.</p>
+        <p>Simulation packs, circuits, CAD, graphics, websites and catalogue sites — <strong>scoped in writing</strong>, closed with source files and a handover note.</p>
         <div class="hero-cta">
           <a href="#contact" class="btn btn-g">Start a project
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -257,37 +242,88 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
     </div>
 
     <div class="hero-visual rv" aria-hidden="true">
-      <svg class="scene" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#1b2a1f"/></pattern>
-          <linearGradient id="fade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#39ff6a" stop-opacity=".35"/><stop offset="1" stop-color="#39ff6a" stop-opacity="0"/></linearGradient>
-        </defs>
-        <rect width="1200" height="360" fill="url(#dots)"/>
-        <!-- circuit traces -->
-        <g stroke="#26402d" stroke-width="2" fill="none">
-          <path d="M0 80h180l40 40h160"/><path d="M0 280h120l60-60h140"/><path d="M1200 60h-220l-40 40H820"/>
-          <path d="M1200 300h-160l-40-40H880"/>
-        </g>
-        <g fill="#39ff6a"><circle cx="380" cy="120" r="5"/><circle cx="320" cy="220" r="5"/><circle cx="820" cy="100" r="5"/><circle cx="880" cy="260" r="5"/></g>
-        <!-- simulated response curve -->
-        <path d="M60 300 C 200 300, 260 90, 380 110 S 520 260, 620 200 S 760 70, 880 150 S 1040 220, 1160 120 L1160 360 L60 360Z" fill="url(#fade)"/>
-        <path class="draw" d="M60 300 C 200 300, 260 90, 380 110 S 520 260, 620 200 S 760 70, 880 150 S 1040 220, 1160 120" fill="none" stroke="#39ff6a" stroke-width="3"/>
-        <!-- CAD bracket -->
-        <g transform="translate(520 60)" stroke="#39ff6a" stroke-width="1.5" fill="none" opacity=".55">
-          <path d="M0 0h120v30H30v90H0z"/><circle cx="15" cy="15" r="7"/><circle cx="100" cy="15" r="7"/><circle cx="15" cy="100" r="7"/>
-          <path d="M-20 0v-14M140 0v-14M-20 -8h160" stroke-dasharray="4 4"/>
-        </g>
-      </svg>
-      <div class="hv-tag hv-1"><i></i>Sweep complete · 12 plots exported</div>
-      <div class="hv-tag hv-2"><span class="mono g">BOM</span> 38 lines · vendor-linked</div>
-      <div class="hv-tag hv-3"><span class="mono g">STEP</span> bracket_v2 · drawing ready</div>
+      <!-- SIMULATION -->
+      <div class="pane">
+        <div class="pane-bar"><span class="mono tag">SIM</span><span class="mono file">cantilever_stress.fea</span></div>
+        <svg viewBox="0 0 360 250" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="cbar" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#0b2a15"/><stop offset=".45" stop-color="#1fa844"/><stop offset=".8" stop-color="#39ff6a"/><stop offset="1" stop-color="#e1ffe8"/>
+            </linearGradient>
+            <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0v6" stroke="#39ff6a" stroke-width="1.2" opacity=".6"/></pattern>
+          </defs>
+          <rect x="30" y="70" width="18" height="120" fill="url(#hatch)"/>
+          <path d="M48 70v120" stroke="#39ff6a" stroke-width="2"/>
+          <path d="M48 112H300V148H48" fill="none" stroke="#3a5a44" stroke-dasharray="4 4"/>
+          <g id="fea"></g>
+          <g id="fea-load">
+            <path d="M300 64V104" stroke="#e1ffe8" stroke-width="2"/>
+            <path d="M293 98l7 10 7-10z" fill="#e1ffe8"/>
+            <text x="306" y="74" class="hi">F</text>
+          </g>
+          <rect x="326" y="60" width="9" height="130" rx="2" fill="url(#cbar)"/>
+          <text x="316" y="40">σ vM</text><text x="323" y="54">max</text><text x="323" y="204">min</text>
+          <text x="30" y="226">deflection</text><text id="fea-d" x="92" y="226" class="hi">0.00</text>
+          <text x="150" y="226">elements</text><text x="202" y="226" class="hi">64</text>
+        </svg>
+        <div class="pane-foot"><i></i>Load sweep running · plots export as PNG + CSV</div>
+      </div>
+
+      <!-- CIRCUIT -->
+      <div class="pane">
+        <div class="pane-bar"><span class="mono tag">SCH</span><span class="mono file">preamp_v3.kicad_sch</span></div>
+        <svg viewBox="0 0 360 250" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <g id="wires" fill="none">
+              <path d="M235 130H320"/><path d="M270 130V60H250"/><path d="M190 60H145V110H170"/>
+              <path d="M145 110H115V125"/><path d="M115 180V195"/><path d="M170 150H150V176"/><path d="M150 204V215"/>
+            </g>
+            <g id="gnd" stroke="#39ff6a" stroke-width="2"><path d="M-12 0h24M-8 5h16M-4 10h8"/></g>
+          </defs>
+          <use href="#wires" stroke="#2c4a35" stroke-width="2"/>
+          <use href="#wires" class="flow" stroke="#39ff6a" stroke-width="2" stroke-dasharray="3 12" stroke-linecap="round"/>
+          <g fill="none" stroke="#39ff6a" stroke-width="2" stroke-linejoin="round">
+            <path d="M250 60L245 53L235 67L225 53L215 67L205 53L195 67L190 60"/>
+            <path d="M115 125L108 130L122 139L108 148L122 157L108 166L122 175L115 180"/>
+            <path d="M170 95V165L235 130Z" fill="#07120a"/>
+            <circle cx="150" cy="190" r="14" fill="#07120a"/>
+            <path d="M141 190c3-7 6-7 9 0s6 7 9 0" stroke-width="1.6"/>
+            <circle cx="322" cy="130" r="3.5" fill="#07120a"/>
+          </g>
+          <use href="#gnd" x="115" y="195"/><use href="#gnd" x="150" y="215"/>
+          <g fill="#39ff6a"><circle cx="145" cy="110" r="3.5"/><circle cx="270" cy="130" r="3.5"/></g>
+          <text x="176" y="114" class="hi" style="font-size:13px">−</text><text x="175" y="155" class="hi" style="font-size:13px">+</text>
+          <text x="196" y="134">U1</text>
+          <text x="208" y="45">Rf 47k</text><text x="70" y="156">Rg 4k7</text>
+          <text x="108" y="194" dx="60" dy="-8">Vin</text>
+          <text x="300" y="120">Vout</text>
+          <rect x="212" y="170" width="128" height="62" rx="6" fill="#050805" stroke="#26402d"/>
+          <path d="M212 206H340" stroke="#1b2a1f" stroke-dasharray="2 3"/>
+          <path id="sc-in" fill="none" stroke="#6f8f78" stroke-width="1.4"/>
+          <path id="sc-out" fill="none" stroke="#39ff6a" stroke-width="1.8"/>
+          <text x="218" y="182" style="font-size:8px">SPICE · gain ×11</text>
+        </svg>
+        <div class="pane-foot"><i></i>ERC clean · BOM vendor-linked</div>
+      </div>
+
+      <!-- CAD -->
+      <div class="pane">
+        <div class="pane-bar"><span class="mono tag">CAD</span><span class="mono file">bracket_v2.step</span></div>
+        <svg viewBox="0 0 360 250" preserveAspectRatio="xMidYMid meet">
+          <ellipse cx="180" cy="190" rx="120" ry="22" fill="none" stroke="#1f3325" stroke-dasharray="3 5"/>
+          <g id="cad" stroke-linejoin="round"></g>
+          <g id="triad" stroke-width="1.6" fill="none"></g>
+          <text x="238" y="226">100 × 60 × 90 mm</text>
+        </svg>
+        <div class="pane-foot"><i></i>STEP + STL + drawing ready</div>
+      </div>
     </div>
   </div>
 
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>Simulation</span><span>Circuit design</span><span>CAD</span><span>Graphics</span><span>HTML sites</span><span>Catalogue sites</span><span>WhatsApp automation</span>
-      <span>Simulation</span><span>Circuit design</span><span>CAD</span><span>Graphics</span><span>HTML sites</span><span>Catalogue sites</span><span>WhatsApp automation</span>
+      <span>Simulation</span><span>Circuit design</span><span>CAD</span><span>Graphics</span><span>HTML sites</span><span>Catalogue sites</span>
+      <span>Simulation</span><span>Circuit design</span><span>CAD</span><span>Graphics</span><span>HTML sites</span><span>Catalogue sites</span>
     </div>
   </div>
 </section>
@@ -299,15 +335,16 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
       <div class="about-quote">
         <span class="big-q">“</span>
         <span class="mono g">The standard</span>
-        <blockquote>“If the scientist who last paid me would find the zip cheap — it isn’t done.”</blockquote>
+        <blockquote>“Good enough is where better work begins.”</blockquote>
         <span class="mono" style="color:var(--muted)">— Joe Gabriel, founder</span>
       </div>
       <div class="about-body">
         <h2 class="display">Built for<br><span class="g">lab-grade</span><br>buyers</h2>
-        <p>GRIO is run by <b>Joe Gabriel</b>, working remotely from NTU, Singapore. Before GRIO, Joe delivered simulation and technical project work for scientists at <b>IGCAR</b> (Indira Gandhi Centre for Atomic Research, DAE, India).</p>
-        <p>That’s the bar every job is held to: units on every axis, BOM lines that exist at a real vendor, drawings a workshop can make without calling back, and links that actually open.</p>
+        <p>Deliveries made for <b>IGCAR</b>, <b>VIT Chennai</b>, and <b>GRIO</b>, spanning simulation, engineering design, prototyping, and technical project work. Projects submitted to date cover robotics, automation, AI, and engineering systems.</p>
+<p>That’s the bar every project is held to: units on every axis, BOM lines that exist at a real vendor, drawings a workshop can make without calling back, and links that actually open.</p>
+        
         <div class="stats">
-          <div class="stat"><b>7</b><span>Service lines</span></div>
+          <div class="stat"><b>6</b><span>Service lines</span></div>
           <div class="stat"><b>2</b><span>Revision rounds included</span></div>
           <div class="stat"><b>24–48h</b><span>To a fixed quote</span></div>
         </div>
@@ -320,8 +357,8 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
 <section id="services">
   <div class="wrap">
     <div class="sec-head rv">
-      <div><span class="eyebrow mono">What I can do for you</span><h2 class="display">Seven lines.<br><span class="g">One owner.</span></h2></div>
-      <p>Every engagement ends in a finished artefact with a named owner, a revision cap and a fixed price. Tap any card for what “done” means.</p>
+      <div><span class="eyebrow mono">What I can do for you</span><h2 class="display">Six lines.<br><span class="g">One owner.</span></h2></div>
+      <p>Every engagement ends in a finished artefact with a named owner and a revision cap. Tap any card for what “done” means.</p>
     </div>
 
     <div class="svc-grid">
@@ -379,83 +416,21 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
         <details><summary>What you get</summary><p>20–80 SKUs to start, each with image, price and enquiry button. Admin through a Google Sheet or simple CMS you’ll actually update, plus a how-to.</p></details>
       </article>
 
-      <article class="svc feature rv">
-        <div class="svc-top">
-          <svg class="svc-ic" viewBox="0 0 54 54"><rect width="54" height="54" rx="10" fill="#031006"/><path d="M27 11a16 16 0 0 0-13.7 24.3L11 43l7.9-2.2A16 16 0 1 0 27 11z" fill="none" stroke="#39ff6a" stroke-width="3" stroke-linejoin="round"/><path d="M21 22c0 6 5 11 11 11l2-3-4-2-2 2c-2-1-3-2-4-4l2-2-2-4z" fill="#39ff6a"/></svg>
-          <div><h3>WhatsApp automation</h3><span class="time">5–10 days</span></div>
-        </div>
-        <p>For shops, clinics and tuition centres that already sell on chat: welcome, catalogue, FAQ, order capture and human handoff.</p>
-        <details><summary style="color:#031006">What you get</summary><p>Flows built on WhatsApp Business tools, scripts in your language mix (English / Hindi / Tamil), and a 30-day tune-up. Meta message fees are passed through at cost.</p></details>
-      </article>
     </div>
   </div>
 </section>
 
-<!-- PACKAGES -->
-<section id="packages">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div><span class="eyebrow mono">Packages, not hours</span><h2 class="display">Pick a pack.<br><span class="g">Know the price.</span></h2></div>
-      <div class="cur" role="group" aria-label="Currency">
-        <button data-cur="inr" class="on">INR ₹</button><button data-cur="sgd">SGD S$</button><button data-cur="usd">USD $</button>
-      </div>
-    </div>
-
-    <div class="pkg-grid">
-      <article class="pkg rv">
-        <span class="name">Desk Lite</span>
-        <span class="price" data-inr="₹12,000" data-sgd="S$160" data-usd="$140">₹12,000</span>
-        <p>One small artefact: a logo set, one CAD part, a 1-page landing, or one simple schematic sheet.</p>
-        <span class="for"><b>Best for</b> first-time buyers testing the working relationship.</span>
-      </article>
-      <article class="pkg hot rv">
-        <span class="name">Desk Standard</span>
-        <span class="price" data-inr="₹40,000" data-sgd="S$530" data-usd="$450">₹40,000</span>
-        <p>One full project at research-lab depth — the same shape of work delivered for IGCAR scientists.</p>
-        <span class="for"><b>Best for</b> scientists, mini firms and overseas buyers who want a complete job.</span>
-      </article>
-      <article class="pkg rv">
-        <span class="name">Desk Plus</span>
-        <span class="price" data-inr="₹65,000" data-sgd="S$860" data-usd="$730">₹65,000</span>
-        <p>Standard plus one extra track — circuit + enclosure CAD, or site + catalogue PDF.</p>
-        <span class="for"><b>Best for</b> when “also, can you just…” comes up on the first call.</span>
-      </article>
-      <article class="pkg wide rv">
-        <span class="name">Mini-Firm Stack</span>
-        <span class="price" data-inr="₹75,000" data-sgd="S$1,000" data-usd="$850">₹75,000</span>
-        <p>Catalogue website + WhatsApp order flow + 12 designed product cards + 30 days of support. Your customer taps a product, WhatsApp opens with the item filled in, you confirm price and stock.</p>
-        <span class="for"><b>Best for</b> shops that live on WhatsApp and have no website yet.</span>
-      </article>
-      <article class="pkg rv">
-        <span class="name">Lab Retain</span>
-        <span class="price" data-inr="₹28,000<small>/mo</small>" data-sgd="S$380<small>/mo</small>" data-usd="On request">₹28,000<small>/mo</small></span>
-        <p>8 focused hours a week of simulation, figures or CAD. Unused hours roll over for up to 2 weeks.</p>
-        <span class="for"><b>Best for</b> PIs and startups with a steady stream of work.</span>
-      </article>
-    </div>
-
-    <div class="addons rv">
-      <span class="mono">Add-ons</span>
-      <span class="chip">Rush &lt;4 days <b>+30%</b></span>
-      <span class="chip">Third revision <b>+10%</b></span>
-      <span class="chip">Extra source handover <b>+10%</b></span>
-      <span class="chip">PCB layout <b>+₹15–35k</b></span>
-      <span class="chip">Hosting + domain <b>+₹3–6k</b></span>
-      <span class="chip">WhatsApp upkeep <b>₹5–12k/mo</b></span>
-    </div>
-  </div>
-</section>
 
 <!-- PROCESS -->
 <section id="process">
   <div class="wrap">
     <div class="sec-head rv">
       <div><span class="eyebrow mono">How we start</span><h2 class="display">Four steps.<br>No surprises.</h2></div>
-      <p>Every job is scoped in writing before anything starts: objective, deliverables, out-of-scope list, timeline and price.</p>
+      <p>Every job is scoped in writing before anything starts: objective, deliverables, out-of-scope list and timeline.</p>
     </div>
     <div class="steps">
       <div class="step rv"><div class="n">01</div><h3>Send the problem</h3><p>8–12 lines plus any files — photos, datasheets, SKU lists, your last paper figure.</p></div>
-      <div class="step rv"><div class="n">02</div><h3>Get a fixed scope</h3><p>A one-page scope and a fixed price within 24–48 hours. Quote valid for 10 days.</p></div>
+      <div class="step rv"><div class="n">02</div><h3>Get a fixed scope</h3><p>A one-page scope and a quote within 24–48 hours. Quote valid for 10 days.</p></div>
       <div class="step rv"><div class="n">03</div><h3>50% to start</h3><p>Work begins on the first half. Two milestones, two revision rounds included.</p></div>
       <div class="step rv"><div class="n">04</div><h3>Files + handover</h3><p>Balance on delivery. You get source files, a handover note and a short walkthrough video.</p></div>
     </div>
@@ -480,11 +455,11 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
     <div class="rv">
       <span class="eyebrow mono">Let’s build it</span>
       <h2 class="display">Let’s<br><span class="g">connect.</span></h2>
-      <p>Tell me what’s stuck — a sweep, a schematic, a figure deadline, or a shop that only takes orders on chat. You’ll get a one-page scope back.</p>
+      <p>Tell me what’s stuck — a sweep, a schematic, a CAD part, a figure deadline, or a site your business needs. You’ll get a one-page scope back.</p>
       <div class="links">
         <a id="l-email" href="#"><span>Email</span><span id="t-email"></span></a>
         <a id="l-wa" href="#" target="_blank" rel="noopener"><span>WhatsApp</span><span id="t-wa"></span></a>
-        <a id="l-li" href="#" target="_blank" rel="noopener"><span>LinkedIn</span><span id="t-li"></span></a>
+        
       </div>
     </div>
 
@@ -496,7 +471,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
       <label>Service
         <select name="service">
           <option>Simulation</option><option>Circuit design</option><option>CAD design</option><option>Graphic design</option>
-          <option>HTML website</option><option>Catalogue website</option><option>WhatsApp automation</option><option>Not sure yet</option>
+          <option>HTML website</option><option>Catalogue website</option><option>Not sure yet</option>
         </select>
       </label>
       <label>The problem, in 8–12 lines
@@ -517,7 +492,7 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
     <div class="giant" aria-hidden="true">GRIO</div>
     <div class="foot">
       <span>© <span id="yr"></span> GRIO Services · Joe Gabriel</span>
-      <span>Remote · Singapore / India · INR · SGD · USD</span>
+      <span>Remote · Singapore / India</span>
       <a href="#top" class="g">Back to top ↑</a>
     </div>
   </div>
@@ -526,11 +501,11 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px}
 <script>
 /* ===== EDIT YOUR CONTACT DETAILS HERE ===== */
 const CONFIG = {
-  email: "hello@grio.services",      // your email
-  whatsapp: "910000000000",          // country code + number, digits only
-  whatsappLabel: "+91 00000 00000",
-  linkedin: "https://www.linkedin.com/in/your-handle",
-  linkedinLabel: "/in/your-handle"
+  email: "grioservices@gmail.com",
+  whatsapp: "919597084597",          // country code + number, digits only
+  whatsappLabel: "+91 95970 84597",
+  reddit: "https://www.reddit.com/user/IntroductionSorry412",
+  redditLabel: "u/IntroductionSorry412"
 };
 /* ========================================== */
 
@@ -538,7 +513,7 @@ document.getElementById("yr").textContent = new Date().getFullYear();
 const $ = id => document.getElementById(id);
 $("l-email").href = "mailto:" + CONFIG.email; $("t-email").textContent = CONFIG.email;
 $("l-wa").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent("SCOPE"); $("t-wa").textContent = CONFIG.whatsappLabel;
-$("l-li").href = CONFIG.linkedin; $("t-li").textContent = CONFIG.linkedinLabel;
+$("l-rd").href = CONFIG.reddit; $("t-rd").textContent = CONFIG.redditLabel;
 
 // sticky header border
 const hdr = document.querySelector("header");
@@ -553,12 +528,6 @@ mm.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { mm.cla
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
 document.querySelectorAll(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
 
-// currency switch
-document.querySelectorAll(".cur button").forEach(b => b.addEventListener("click", () => {
-  document.querySelectorAll(".cur button").forEach(x => x.classList.toggle("on", x === b));
-  const c = b.dataset.cur;
-  document.querySelectorAll(".price").forEach(p => p.innerHTML = p.dataset[c]);
-}));
 
 // scope form -> WhatsApp / email
 let via = "wa";
@@ -571,6 +540,122 @@ $("scope").addEventListener("submit", e => {
   if (via === "wa") window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(body), "_blank");
   else location.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent("SCOPE — " + f.service.value) + "&body=" + encodeURIComponent(body);
 });
+
+// ===== HERO PANELS: simulation, circuit, CAD =====
+(() => {
+  const NS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs, parent) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent && parent.appendChild(n); return n; };
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // --- FEA cantilever: 16 x 4 mesh, von Mises-ish colour map ---
+  const stops = [[0,[11,42,21]],[.45,[31,168,68]],[.8,[57,255,106]],[1,[225,255,232]]];
+  const cmap = v => { v = Math.max(0, Math.min(1, v));
+    for (let i = 1; i < stops.length; i++) if (v <= stops[i][0]) {
+      const [t0,c0] = stops[i-1], [t1,c1] = stops[i], t = (v-t0)/(t1-t0);
+      return "rgb(" + c0.map((c,j) => Math.round(c + (c1[j]-c)*t)).join(",") + ")"; }
+    return "rgb(225,255,232)"; };
+  const feaG = document.getElementById("fea"), load = document.getElementById("fea-load"), dTxt = document.getElementById("fea-d");
+  const NX = 16, NY = 4, X0 = 48, X1 = 300, TOP = 112, BOT = 148;
+  const cells = [];
+  for (let i = 0; i < NX; i++) for (let j = 0; j < NY; j++)
+    cells.push({ i, j, p: el("path", { stroke: "#050705", "stroke-width": .6 }, feaG) });
+  const w = s => s * s * (3 - s) / 2;                     // cantilever deflection shape, 0..1
+  function drawFEA(amp) {                                 // amp 0..1
+    const D = 46 * amp;
+    for (const c of cells) {
+      const sa = c.i / NX, sb = (c.i + 1) / NX, xa = X0 + (X1 - X0) * sa, xb = X0 + (X1 - X0) * sb;
+      const y = r => TOP + (BOT - TOP) * r;
+      const ra = c.j / NY, rb = (c.j + 1) / NY, wa = D * w(sa), wb = D * w(sb);
+      c.p.setAttribute("d", `M${xa} ${y(ra)+wa}L${xb} ${y(ra)+wb}L${xb} ${y(rb)+wb}L${xa} ${y(rb)+wa}Z`);
+      const fibre = Math.abs((c.j + .5) / NY - .5) * 2;     // 0 at neutral axis, 1 at skin
+      c.p.setAttribute("fill", cmap((.45 + .55 * amp) * (1 - (sa + sb) / 2) * (.25 + .75 * fibre) * 1.3));
+    }
+    load.setAttribute("transform", `translate(0 ${D})`);
+    dTxt.textContent = (amp * 4.6).toFixed(2) + " mm";
+  }
+
+  // --- Scope trace in the schematic ---
+  const scIn = document.getElementById("sc-in"), scOut = document.getElementById("sc-out");
+  function drawScope(ph) {
+    let a = "", b = "";
+    for (let x = 0; x <= 124; x += 3) {
+      const t = x / 124 * Math.PI * 4 + ph, X = 214 + x;
+      a += (x ? "L" : "M") + X + " " + (206 - 4 * Math.sin(t)).toFixed(1);
+      b += (x ? "L" : "M") + X + " " + (206 - 15 * Math.sin(t)).toFixed(1);
+    }
+    scIn.setAttribute("d", a); scOut.setAttribute("d", b);
+  }
+
+  // --- CAD: extruded L-bracket with holes, simple perspective + painter's sort ---
+  const cad = document.getElementById("cad"), triad = document.getElementById("triad");
+  const P = [[0,0],[100,0],[100,12],[12,12],[12,90],[0,90]], DZ = 60, C = [50, 45, 30];
+  const faces = [];
+  faces.push({ pts: P.map(([x,y]) => [x,y,0]).reverse(), n: [0,0,-1] });
+  faces.push({ pts: P.map(([x,y]) => [x,y,DZ]), n: [0,0,1] });
+  P.forEach(([x1,y1], k) => {
+    const [x2,y2] = P[(k + 1) % P.length], len = Math.hypot(x2-x1, y2-y1);
+    faces.push({ pts: [[x1,y1,0],[x2,y2,0],[x2,y2,DZ],[x1,y1,DZ]], n: [(y2-y1)/len, -(x2-x1)/len, 0], k });
+  });
+  const circle = (fn, r = 7, n = 20) => Array.from({ length: n }, (_, i) => fn(r * Math.cos(i / n * 2 * Math.PI), r * Math.sin(i / n * 2 * Math.PI)));
+  faces.find(f => f.k === 2).holes = [18, 42].map(z => circle((a, b) => [65 + a, 12, z + b]));   // base plate top
+  faces.find(f => f.k === 3).holes = [18, 42].map(z => circle((a, b) => [12, 58 + a, z + b]));   // upright inner face
+  faces.forEach(f => { f.poly = el("polygon", {}, cad); f.hp = (f.holes || []).map(() => el("polygon", {}, cad)); });
+
+  const F = 470, DIST = 390, CX = 180, CY = 118, TILT = .42, light = [-.4, .75, .55];
+  function rot(v, a, isNormal) {
+    let [x, y, z] = isNormal ? v : [v[0]-C[0], v[1]-C[1], v[2]-C[2]];
+    const ca = Math.cos(a), sa = Math.sin(a), cb = Math.cos(TILT), sb = Math.sin(TILT);
+    [x, z] = [x*ca + z*sa, -x*sa + z*ca];
+    [y, z] = [y*cb - z*sb, y*sb + z*cb];
+    return [x, y, z];
+  }
+  const proj = ([x, y, z]) => [CX + x * F / (DIST - z), CY - y * F / (DIST - z)];
+  const pstr = pts => pts.map(p => proj(p).map(n => n.toFixed(1)).join(",")).join(" ");
+  function drawCAD(a) {
+    const list = faces.map(f => {
+      const r = f.pts.map(p => rot(p, a)), n = rot(f.n, a, true), c = r[0];
+      const vis = n[0]*(0-c[0]) + n[1]*(0-c[1]) + n[2]*(DIST-c[2]) > 0;
+      return { f, r, n, vis, depth: r.reduce((s, p) => s + p[2], 0) / r.length };
+    }).sort((u, v) => (u.vis - v.vis) || (u.depth - v.depth));
+    list.forEach(({ f, r, n, vis }) => {
+      cad.appendChild(f.poly);
+      const lit = Math.max(0, n[0]*light[0] + n[1]*light[1] + n[2]*light[2]);
+      f.poly.setAttribute("points", pstr(r));
+      f.poly.setAttribute("fill", vis ? `rgba(57,255,106,${(.05 + .28 * lit).toFixed(3)})` : "none");
+      f.poly.setAttribute("stroke", vis ? "#39ff6a" : "#2c4a35");
+      f.poly.setAttribute("stroke-width", vis ? 1.4 : 1);
+      f.poly.setAttribute("stroke-dasharray", vis ? "" : "3 4");
+      f.hp.forEach((h, i) => {
+        cad.appendChild(h);
+        h.setAttribute("points", pstr(f.holes[i].map(p => rot(p, a))));
+        h.setAttribute("fill", vis ? "#050805" : "none");
+        h.setAttribute("stroke", vis ? "#39ff6a" : "#2c4a35");
+        h.setAttribute("stroke-width", vis ? 1.2 : .8);
+        h.setAttribute("stroke-dasharray", vis ? "" : "2 3");
+      });
+    });
+    // axis triad, bottom-left
+    triad.innerHTML = "";
+    [["X",[1,0,0],"#39ff6a"],["Y",[0,1,0],"#e1ffe8"],["Z",[0,0,1],"#1fa844"]].forEach(([lab, v, col]) => {
+      const r = rot(v, a, true), x = 46 + r[0] * 22, y = 212 - r[1] * 22;
+      el("line", { x1: 46, y1: 212, x2: x.toFixed(1), y2: y.toFixed(1), stroke: col }, triad);
+      el("text", { x: (x + (x > 46 ? 3 : -9)).toFixed(1), y: (y + 3).toFixed(1), fill: col, stroke: "none" }, triad).textContent = lab;
+    });
+  }
+
+  // --- loop (paused while off-screen) ---
+  let on = true, t0 = performance.now();
+  function frame(now) {
+    const t = (now - t0) / 1000;
+    drawFEA(.55 + .45 * Math.sin(t * 1.3));
+    drawScope(t * 3);
+    drawCAD(-.7 + t * .45);
+    if (on && !reduce) requestAnimationFrame(frame);
+  }
+  const hv = document.querySelector(".hero-visual");
+  new IntersectionObserver(([e]) => { const was = on; on = e.isIntersecting; if (on && !was && !reduce) requestAnimationFrame(frame); }).observe(hv);
+  frame(t0 + 1200);
+})();
 </script>
 </body>
 </html>
