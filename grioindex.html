@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GRIO Services — Finished technical files, fixed price</title>
+<meta name="description" content="GRIO delivers finished simulation packs, circuits, CAD, graphics, websites, catalogues and WhatsApp automation. Fixed price, scoped in writing, source files included.">
+<meta property="og:title" content="GRIO Services">
+<meta property="og:description" content="Finished technical files and small-business digital tools. Fixed price. Remote.">
+<meta name="theme-color" content="#050705">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050705'/%3E%3Cpath d='M9 16a7 7 0 1 1 14 0h-7' fill='none' stroke='%2339ff6a' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050705; --bg-2:#0a0f0b; --panel:#0d140f; --line:#1b2a1f; --line-2:#26402d;
+  --green:#39ff6a; --green-2:#20d04e; --green-dim:#153d20; --navy:#07122b;
+  --text:#e9f5ec; --muted:#8fa596; --muted-2:#5f7466;
+  --display:"Archivo",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+  --r:18px; --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--green);color:#000}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.display{font-family:var(--display);font-stretch:125%;font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-.01em}
+.g{color:var(--green)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--green);margin-bottom:22px}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--green)}
+
+/* grain + grid */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%)}
+main,header,footer{position:relative;z-index:1}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s;border:1.5px solid transparent;cursor:pointer;font-family:var(--body)}
+.btn-g{background:var(--green);color:#031006;box-shadow:0 0 0 0 rgba(57,255,106,.5)}
+.btn-g:hover{transform:translateY(-2px);box-shadow:0 10px 40px -8px rgba(57,255,106,.6)}
+.btn-o{border-color:var(--line-2);color:var(--text)}
+.btn-o:hover{border-color:var(--green);color:var(--green)}
+.btn svg{width:16px;height:16px}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(5,7,5,.72);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-stretch:125%;font-weight:900;font-size:22px;letter-spacing:.02em}
+.logo-mark{width:30px;height:30px}
+.nav-links{display:flex;gap:34px;font-size:14px;color:var(--muted)}
+.nav-links a{position:relative;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--green);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav .btn{padding:10px 18px;font-size:14px}
+.burger{display:none;background:none;border:0;color:var(--text);width:40px;height:40px;cursor:pointer}
+.mobile-menu{display:none}
+
+/* hero */
+.hero{padding:88px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:end}
+.hero h1{font-size:clamp(52px,9.2vw,132px)}
+.hero h1 .outline{-webkit-text-stroke:2px var(--green);color:transparent}
+.hero-side p{font-size:19px;color:var(--muted);max-width:420px;margin-bottom:28px}
+.hero-side p strong{color:var(--green);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-visual{margin-top:64px;position:relative;border-radius:28px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(135deg,#0b1a0f,#050705 60%);height:360px}
+.hero-visual svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.hv-tag{position:absolute;padding:10px 14px;border-radius:12px;background:rgba(5,7,5,.85);border:1px solid var(--line-2);font-size:13px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(6px)}
+.hv-tag i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:pulse 2s infinite}
+.hv-1{left:28px;bottom:28px}.hv-2{right:28px;top:28px}.hv-3{right:28px;bottom:28px}
+@keyframes pulse{50%{opacity:.35}}
+.draw{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 3.2s cubic-bezier(.6,.1,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);background:var(--green);color:#031006;overflow:hidden;margin-top:72px}
+.marquee-track{display:flex;gap:44px;padding:18px 0;width:max-content;animation:scroll 32s linear infinite}
+.marquee span{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:26px;text-transform:uppercase;white-space:nowrap;display:flex;align-items:center;gap:44px}
+.marquee span::after{content:"✦";font-size:18px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:120px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:56px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(40px,6vw,80px)}
+.sec-head p{color:var(--muted);max-width:380px}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:0;border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.about-quote{background:var(--green-dim);padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;position:relative;overflow:hidden}
+.about-quote blockquote{font-family:var(--display);font-stretch:110%;font-weight:800;font-size:clamp(26px,3vw,36px);line-height:1.12}
+.about-quote .big-q{position:absolute;right:-20px;top:-60px;font-family:var(--display);font-size:280px;color:var(--green);opacity:.12;line-height:1}
+.about-body{padding:56px 48px;background:var(--panel)}
+.about-body h2{font-size:clamp(38px,4.6vw,62px);margin-bottom:28px}
+.about-body p{color:var(--muted);margin-bottom:16px;font-size:17px}
+.about-body p b{color:var(--text);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:36px;border-radius:14px;overflow:hidden}
+.stat{background:var(--bg-2);padding:20px}
+.stat b{display:block;font-family:var(--display);font-stretch:125%;font-weight:900;font-size:30px;color:var(--green);line-height:1}
+.stat span{font-size:13px;color:var(--muted)}
+
+/* services */
+#services{background:var(--navy);border-block:1px solid #13224a}
+#services .sec-head p{color:#8d9ec2}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:18px}
+.svc{background:rgba(3,8,22,.7);border:1px solid #1a2b57;border-radius:var(--r);padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
+.svc:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 20px 60px -30px rgba(57,255,106,.5)}
+.svc-top{display:flex;align-items:center;gap:16px}
+.svc-ic{width:54px;height:54px;flex:none}
+.svc h3{font-size:20px;font-weight:600;line-height:1.2}
+.svc .time{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--green);text-transform:uppercase}
+.svc p{color:#9fb0d2;font-size:15px}
+.svc details{margin-top:auto;border-top:1px solid #1a2b57;padding-top:14px}
+.svc summary{cursor:pointer;font-size:14px;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)}
+.svc summary::-webkit-details-marker{display:none}
+.svc summary::after{content:"+";font-size:20px;color:var(--green);transition:transform .25s}
+.svc details[open] summary::after{transform:rotate(45deg)}
+.svc details p{margin-top:10px;font-size:14px}
+.svc.feature{background:var(--green);color:#031006;border-color:var(--green)}
+.svc.feature p,.svc.feature .time{color:#0b3a17}
+.svc.feature h3{font-family:var(--display);font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:26px;line-height:1}
+
+/* packages */
+.cur{display:inline-flex;padding:5px;border:1px solid var(--line-2);border-radius:999px;gap:4px}
+.cur button{background:none;border:0;color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:.1em;padding:9px 16px;border-radius:999px;cursor:pointer;transition:all .2s}
+.cur button.on{background:var(--green);color:#031006}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pkg{border:1px solid var(--line);background:var(--panel);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:16px;transition:border-color .3s,transform .3s}
+.pkg:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.pkg .name{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:24px;text-transform:uppercase;line-height:1}
+.pkg .price{font-family:var(--display);font-stretch:100%;font-weight:800;font-size:44px;line-height:1;color:var(--green)}
+.pkg .price small{font-size:15px;color:var(--muted);font-weight:500;margin-left:4px}
+.pkg p{color:var(--muted);font-size:15px}
+.pkg .for{font-size:13px;color:var(--muted-2);border-top:1px dashed var(--line-2);padding-top:14px;margin-top:auto}
+.pkg .for b{color:var(--text);font-weight:500}
+.pkg.hot{background:linear-gradient(160deg,#0f2a16,#07120a);border-color:var(--green);position:relative}
+.pkg.hot::before{content:"Default quote";position:absolute;top:-12px;left:30px;background:var(--green);color:#031006;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:6px}
+.pkg.wide{grid-column:span 2}
+.addons{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.addons .mono{color:var(--muted);margin-right:6px}
+.chip{border:1px solid var(--line-2);border-radius:999px;padding:8px 14px;font-size:13px;color:var(--muted)}
+.chip b{color:var(--green);font-weight:600}
+
+/* process */
+#process{background:var(--green);color:#031006}
+#process .eyebrow{color:#031006}#process .eyebrow::before{background:#031006}
+#process .sec-head p{color:#0b3a17}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:2px solid #031006}
+.step{padding:30px 26px 10px 0;border-right:1px solid rgba(3,16,6,.2);margin-right:26px}
+.step:last-child{border-right:0;margin-right:0}
+.step .n{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:64px;line-height:1;margin-bottom:18px;-webkit-text-stroke:2px #031006;color:transparent}
+.step h3{font-size:19px;margin-bottom:8px}
+.step p{font-size:15px;color:#0b3a17}
+
+/* promise */
+.promise{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pr{border-left:2px solid var(--green);padding:6px 0 6px 22px}
+.pr h3{font-size:18px;margin-bottom:6px}
+.pr p{color:var(--muted);font-size:15px}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-grid h2{font-size:clamp(48px,7vw,96px);margin-bottom:22px}
+.contact-grid > div > p{color:var(--muted);font-size:18px;max-width:440px;margin-bottom:32px}
+.links{border:1px solid var(--green-2);border-radius:var(--r);padding:8px;background:rgba(57,255,106,.03);box-shadow:0 0 50px -25px var(--green)}
+.links a{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-radius:12px;transition:background .2s}
+.links a:hover{background:rgba(57,255,106,.08)}
+.links a span:first-child{color:var(--green);font-weight:600}
+.links a span:last-child{color:var(--muted);font-size:15px}
+form{background:var(--navy);border:1px solid #1e3b8a;border-radius:24px;padding:32px;display:grid;gap:18px;box-shadow:0 0 60px -30px #2b5cff}
+label{display:grid;gap:8px;font-size:14px;font-weight:600}
+input,select,textarea{width:100%;background:#040a1a;border:1.5px solid #1f5f33;border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--body);font-size:15px;transition:border-color .2s,box-shadow .2s}
+textarea{min-height:130px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px rgba(57,255,106,.12)}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2339ff6a' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.send-row{display:flex;gap:10px;flex-wrap:wrap}
+.send-row .btn{flex:1;justify-content:center}
+.fine{font-size:12px;color:#7f8fb3;text-align:center}
+
+footer{border-top:1px solid var(--line);padding:40px 0 60px}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;color:var(--muted-2);font-size:14px}
+.giant{font-family:var(--display);font-stretch:125%;font-weight:900;font-size:clamp(90px,24vw,340px);line-height:.8;color:transparent;-webkit-text-stroke:1px var(--line-2);text-align:center;letter-spacing:-.02em;margin-bottom:40px;user-select:none}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .pkg-grid{grid-template-columns:1fr 1fr}.pkg.wide{grid-column:span 2}
+  .steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0;margin-right:0}
+  .promise{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .wrap{padding:0 16px}
+  section{padding:84px 0}
+  .nav-links,.nav .btn{display:none}.burger{display:block}
+  .mobile-menu.open{display:flex;flex-direction:column;gap:4px;padding:10px 16px 20px;border-top:1px solid var(--line)}
+  .mobile-menu a{padding:12px 0;font-size:18px;border-bottom:1px solid var(--line)}
+  .hero{padding-top:56px}.hero-visual{height:260px;margin-top:44px}.hv-2{display:none}
+  .about-quote,.about-body{padding:36px 24px}
+  .svc-grid{grid-template-columns:1fr}
+  .pkg-grid{grid-template-columns:1fr}.pkg.wide{grid-column:auto}
+  .steps{grid-template-columns:1fr}.step{border-right:0;margin-right:0;border-bottom:1px solid rgba(3,16,6,.2);padding:26px 0}
+  .row2{grid-template-columns:1fr}form{padding:22px}
+  .stats{grid-template-columns:1fr 1fr 1fr}.stat{padding:14px}.stat b{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}.draw{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="GRIO home">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#39ff6a"/><path d="M9 16a7 7 0 1 1 14 0h-7" fill="none" stroke="#031006" stroke-width="3.5" stroke-linecap="round"/></svg>
+      GRIO
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#about">About</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#process">Process</a><a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn-g">Get a scope</a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" id="burger">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mmenu">
+    <a href="#about">About</a><a href="#services">Services</a><a href="#packages">Packages</a><a href="#process">Process</a><a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="hero-grid">
+      <h1 class="display rv">Messy<br>problem in.<br><span class="g">Finished</span><br><span class="outline">file out.</span></h1>
+      <div class="hero-side rv">
+        <p>Simulation packs, circuits, CAD, graphics, catalogue sites and WhatsApp flows — <strong>fixed price, scoped in writing</strong>, closed with source files and a handover note.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-g">Start a project
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#services" class="btn btn-o">See services</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual rv" aria-hidden="true">
+      <svg class="scene" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#1b2a1f"/></pattern>
+          <linearGradient id="fade" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#39ff6a" stop-opacity=".35"/><stop offset="1" stop-color="#39ff6a" stop-opacity="0"/></linearGradient>
+        </defs>
+        <rect width="1200" height="360" fill="url(#dots)"/>
+        <!-- circuit traces -->
+        <g stroke="#26402d" stroke-width="2" fill="none">
+          <path d="M0 80h180l40 40h160"/><path d="M0 280h120l60-60h140"/><path d="M1200 60h-220l-40 40H820"/>
+          <path d="M1200 300h-160l-40-40H880"/>
+        </g>
+        <g fill="#39ff6a"><circle cx="380" cy="120" r="5"/><circle cx="320" cy="220" r="5"/><circle cx="820" cy="100" r="5"/><circle cx="880" cy="260" r="5"/></g>
+        <!-- simulated response curve -->
+        <path d="M60 300 C 200 300, 260 90, 380 110 S 520 260, 620 200 S 760 70, 880 150 S 1040 220, 1160 120 L1160 360 L60 360Z" fill="url(#fade)"/>
+        <path class="draw" d="M60 300 C 200 300, 260 90, 380 110 S 520 260, 620 200 S 760 70, 880 150 S 1040 220, 1160 120" fill="none" stroke="#39ff6a" stroke-width="3"/>
+        <!-- CAD bracket -->
+        <g transform="translate(520 60)" stroke="#39ff6a" stroke-width="1.5" fill="none" opacity=".55">
+          <path d="M0 0h120v30H30v90H0z"/><circle cx="15" cy="15" r="7"/><circle cx="100" cy="15" r="7"/><circle cx="15" cy="100" r="7"/>
+          <path d="M-20 0v-14M140 0v-14M-20 -8h160" stroke-dasharray="4 4"/>
+        </g>
+      </svg>
+      <div class="hv-tag hv-1"><i></i>Sweep complete · 12 plots exported</div>
+      <div class="hv-tag hv-2"><span class="mono g">BOM</span> 38 lines · vendor-linked</div>
+      <div class="hv-tag hv-3"><span class="mono g">STEP</span> bracket_v2 · drawing ready</div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Simulation</span><span>Circuit design</span><span>CAD</span><span>Graphics</span><span>HTML sites</span><span>Catalogue sites</span><span>WhatsApp automation</span>
+      <span>Simulation</span><span>Circuit design</span><span>CAD</span><span>Graphics</span><span>HTML sites</span><span>Catalogue sites</span><span>WhatsApp automation</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid rv">
+      <div class="about-quote">
+        <span class="big-q">“</span>
+        <span class="mono g">The standard</span>
+        <blockquote>“If the scientist who last paid me would find the zip cheap — it isn’t done.”</blockquote>
+        <span class="mono" style="color:var(--muted)">— Joe Gabriel, founder</span>
+      </div>
+      <div class="about-body">
+        <h2 class="display">Built for<br><span class="g">lab-grade</span><br>buyers</h2>
+        <p>GRIO is run by <b>Joe Gabriel</b>, working remotely from NTU, Singapore. Before GRIO, Joe delivered simulation and technical project work for scientists at <b>IGCAR</b> (Indira Gandhi Centre for Atomic Research, DAE, India).</p>
+        <p>That’s the bar every job is held to: units on every axis, BOM lines that exist at a real vendor, drawings a workshop can make without calling back, and links that actually open.</p>
+        <div class="stats">
+          <div class="stat"><b>7</b><span>Service lines</span></div>
+          <div class="stat"><b>2</b><span>Revision rounds included</span></div>
+          <div class="stat"><b>24–48h</b><span>To a fixed quote</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><span class="eyebrow mono">What I can do for you</span><h2 class="display">Seven lines.<br><span class="g">One owner.</span></h2></div>
+      <p>Every engagement ends in a finished artefact with a named owner, a revision cap and a fixed price. Tap any card for what “done” means.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc rv">
+        <div class="svc-top">
+          <svg class="svc-ic" viewBox="0 0 54 54"><rect width="54" height="54" rx="10" fill="#081a3a"/><path d="M8 40c8 0 10-24 18-24s10 16 20 10" fill="none" stroke="#39ff6a" stroke-width="3" stroke-linecap="round"/><circle cx="26" cy="16" r="4" fill="#39ff6a"/></svg>
+          <div><h3>Scientific & engineering simulation</h3><span class="time">5–12 days</span></div>
+        </div>
+        <p>Model, runs, plots and a 4–8 page technical note — with every source file.</p>
+        <details><summary>What you get</summary><p>A zip with the input deck, mesh or model file, raw result tables, 6–12 publication-clean plots, and a short note covering objective, assumptions, boundary conditions, results and limits.</p></details>
+      </article>
+
+      <article class="svc rv">
+        <div class="svc-top">
+          <svg class="svc-ic" viewBox="0 0 54 54"><rect width="54" height="54" rx="10" fill="#081a3a"/><path d="M8 27h10l4-8 6 16 4-8h14" fill="none" stroke="#39ff6a" stroke-width="3" stroke-linejoin="round"/></svg>
+          <div><h3>Circuit design</h3><span class="time">4–10 days</span></div>
+        </div>
+        <p>Schematic, BOM, SPICE sanity check and a pinout note. PCB layout as an add-on.</p>
+        <details><summary>What you get</summary><p>Schematic in KiCad / EasyEDA / Altium-export, annotated PDF, BOM with vendor links, SPICE check, and a one-page “how to test on the bench” note. Optional 2-layer PCB + Gerbers.</p></details>
+      </article>
+
+      <article class="svc rv">
+        <div class="svc-top">
+          <svg class="svc-ic" viewBox="0 0 54 54"><rect width="54" height="54" rx="10" fill="#081a3a"/><path d="M27 10l15 8.5v17L27 44l-15-8.5v-17z" fill="#39ff6a"/><path d="M12 18.5L27 27l15-8.5M27 27v17" stroke="#081a3a" stroke-width="2.5" fill="none"/></svg>
+          <div><h3>CAD design</h3><span class="time">3–8 days</span></div>
+        </div>
+        <p>Part or assembly, 2D drawing, STEP / STL and a revision pack.</p>
+        <details><summary>What you get</summary><p>Parametric model, exploded view for assemblies, a manufacturing drawing with defendable tolerances, and STEP + STL + native file. CAD tool named on the quote.</p></details>
+      </article>
+
+      <article class="svc rv">
+        <div class="svc-top">
+          <svg class="svc-ic" viewBox="0 0 54 54"><rect width="54" height="54" rx="10" fill="#081a3a"/><rect x="10" y="10" width="16" height="16" fill="#39ff6a"/><circle cx="36" cy="18" r="8" fill="none" stroke="#39ff6a" stroke-width="3"/><path d="M10 44l10-12 10 12z" fill="#39ff6a"/><rect x="30" y="32" width="14" height="12" rx="6" fill="#39ff6a"/></svg>
+          <div><h3>Graphic design</h3><span class="time">2–6 days</span></div>
+        </div>
+        <p>Logo sets, posters, paper figures, social kits and catalogue pages.</p>
+        <details><summary>What you get</summary><p>Print-ready PDF plus editable source. Paper figures follow journal column width. Brand kits include logo, colour tokens, two typefaces and three social templates.</p></details>
+      </article>
+
+      <article class="svc rv">
+        <div class="svc-top">
+          <svg class="svc-ic" viewBox="0 0 54 54"><rect width="54" height="54" rx="10" fill="#081a3a"/><rect x="9" y="12" width="36" height="30" rx="4" fill="none" stroke="#39ff6a" stroke-width="3"/><path d="M9 20h36" stroke="#39ff6a" stroke-width="3"/><path d="M22 28l-4 4 4 4M32 28l4 4-4 4" stroke="#39ff6a" stroke-width="2.5" fill="none"/></svg>
+          <div><h3>HTML website</h3><span class="time">6–12 days</span></div>
+        </div>
+        <p>A 3–6 page responsive site with WhatsApp click-to-chat and basic SEO.</p>
+        <details><summary>What you get</summary><p>Home, About, Services, Contact. Mobile-first, hosted on GitHub Pages, Netlify or your cPanel. You get the repo and a one-page edit guide.</p></details>
+      </article>
+
+      <article class="svc rv">
+        <div class="svc-top">
+          <svg class="svc-ic" viewBox="0 0 54 54"><rect width="54" height="54" rx="10" fill="#081a3a"/><g fill="#39ff6a"><rect x="10" y="10" width="15" height="15" rx="3"/><rect x="29" y="10" width="15" height="15" rx="3"/><rect x="10" y="29" width="15" height="15" rx="3"/></g><rect x="29" y="29" width="15" height="15" rx="3" fill="none" stroke="#39ff6a" stroke-width="3"/></svg>
+          <div><h3>Catalogue website</h3><span class="time">8–14 days</span></div>
+        </div>
+        <p>Product grid, filters and a WhatsApp enquiry button pre-filled with the item name.</p>
+        <details><summary>What you get</summary><p>20–80 SKUs to start, each with image, price and enquiry button. Admin through a Google Sheet or simple CMS you’ll actually update, plus a how-to.</p></details>
+      </article>
+
+      <article class="svc feature rv">
+        <div class="svc-top">
+          <svg class="svc-ic" viewBox="0 0 54 54"><rect width="54" height="54" rx="10" fill="#031006"/><path d="M27 11a16 16 0 0 0-13.7 24.3L11 43l7.9-2.2A16 16 0 1 0 27 11z" fill="none" stroke="#39ff6a" stroke-width="3" stroke-linejoin="round"/><path d="M21 22c0 6 5 11 11 11l2-3-4-2-2 2c-2-1-3-2-4-4l2-2-2-4z" fill="#39ff6a"/></svg>
+          <div><h3>WhatsApp automation</h3><span class="time">5–10 days</span></div>
+        </div>
+        <p>For shops, clinics and tuition centres that already sell on chat: welcome, catalogue, FAQ, order capture and human handoff.</p>
+        <details><summary style="color:#031006">What you get</summary><p>Flows built on WhatsApp Business tools, scripts in your language mix (English / Hindi / Tamil), and a 30-day tune-up. Meta message fees are passed through at cost.</p></details>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><span class="eyebrow mono">Packages, not hours</span><h2 class="display">Pick a pack.<br><span class="g">Know the price.</span></h2></div>
+      <div class="cur" role="group" aria-label="Currency">
+        <button data-cur="inr" class="on">INR ₹</button><button data-cur="sgd">SGD S$</button><button data-cur="usd">USD $</button>
+      </div>
+    </div>
+
+    <div class="pkg-grid">
+      <article class="pkg rv">
+        <span class="name">Desk Lite</span>
+        <span class="price" data-inr="₹12,000" data-sgd="S$160" data-usd="$140">₹12,000</span>
+        <p>One small artefact: a logo set, one CAD part, a 1-page landing, or one simple schematic sheet.</p>
+        <span class="for"><b>Best for</b> first-time buyers testing the working relationship.</span>
+      </article>
+      <article class="pkg hot rv">
+        <span class="name">Desk Standard</span>
+        <span class="price" data-inr="₹40,000" data-sgd="S$530" data-usd="$450">₹40,000</span>
+        <p>One full project at research-lab depth — the same shape of work delivered for IGCAR scientists.</p>
+        <span class="for"><b>Best for</b> scientists, mini firms and overseas buyers who want a complete job.</span>
+      </article>
+      <article class="pkg rv">
+        <span class="name">Desk Plus</span>
+        <span class="price" data-inr="₹65,000" data-sgd="S$860" data-usd="$730">₹65,000</span>
+        <p>Standard plus one extra track — circuit + enclosure CAD, or site + catalogue PDF.</p>
+        <span class="for"><b>Best for</b> when “also, can you just…” comes up on the first call.</span>
+      </article>
+      <article class="pkg wide rv">
+        <span class="name">Mini-Firm Stack</span>
+        <span class="price" data-inr="₹75,000" data-sgd="S$1,000" data-usd="$850">₹75,000</span>
+        <p>Catalogue website + WhatsApp order flow + 12 designed product cards + 30 days of support. Your customer taps a product, WhatsApp opens with the item filled in, you confirm price and stock.</p>
+        <span class="for"><b>Best for</b> shops that live on WhatsApp and have no website yet.</span>
+      </article>
+      <article class="pkg rv">
+        <span class="name">Lab Retain</span>
+        <span class="price" data-inr="₹28,000<small>/mo</small>" data-sgd="S$380<small>/mo</small>" data-usd="On request">₹28,000<small>/mo</small></span>
+        <p>8 focused hours a week of simulation, figures or CAD. Unused hours roll over for up to 2 weeks.</p>
+        <span class="for"><b>Best for</b> PIs and startups with a steady stream of work.</span>
+      </article>
+    </div>
+
+    <div class="addons rv">
+      <span class="mono">Add-ons</span>
+      <span class="chip">Rush &lt;4 days <b>+30%</b></span>
+      <span class="chip">Third revision <b>+10%</b></span>
+      <span class="chip">Extra source handover <b>+10%</b></span>
+      <span class="chip">PCB layout <b>+₹15–35k</b></span>
+      <span class="chip">Hosting + domain <b>+₹3–6k</b></span>
+      <span class="chip">WhatsApp upkeep <b>₹5–12k/mo</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div><span class="eyebrow mono">How we start</span><h2 class="display">Four steps.<br>No surprises.</h2></div>
+      <p>Every job is scoped in writing before anything starts: objective, deliverables, out-of-scope list, timeline and price.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="n">01</div><h3>Send the problem</h3><p>8–12 lines plus any files — photos, datasheets, SKU lists, your last paper figure.</p></div>
+      <div class="step rv"><div class="n">02</div><h3>Get a fixed scope</h3><p>A one-page scope and a fixed price within 24–48 hours. Quote valid for 10 days.</p></div>
+      <div class="step rv"><div class="n">03</div><h3>50% to start</h3><p>Work begins on the first half. Two milestones, two revision rounds included.</p></div>
+      <div class="step rv"><div class="n">04</div><h3>Files + handover</h3><p>Balance on delivery. You get source files, a handover note and a short walkthrough video.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section style="padding-bottom:40px">
+  <div class="wrap">
+    <div class="sec-head rv"><div><span class="eyebrow mono">The quality bar</span><h2 class="display">What <span class="g">done</span> means</h2></div></div>
+    <div class="promise">
+      <div class="pr rv"><h3>Numbers you can trust</h3><p>Units on every axis. Results re-run before delivery. Nothing invented — assumptions stated, limits written down.</p></div>
+      <div class="pr rv"><h3>Parts that exist</h3><p>BOM lines link to real vendors. Drawings a workshop can build without calling back.</p></div>
+      <div class="pr rv"><h3>Your files, your data</h3><p>Unpublished lab or client data stays private. You own the source and get a guide to edit it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="rv">
+      <span class="eyebrow mono">Let’s build it</span>
+      <h2 class="display">Let’s<br><span class="g">connect.</span></h2>
+      <p>Tell me what’s stuck — a sweep, a schematic, a figure deadline, or a shop that only takes orders on chat. You’ll get a one-page scope back.</p>
+      <div class="links">
+        <a id="l-email" href="#"><span>Email</span><span id="t-email"></span></a>
+        <a id="l-wa" href="#" target="_blank" rel="noopener"><span>WhatsApp</span><span id="t-wa"></span></a>
+        <a id="l-li" href="#" target="_blank" rel="noopener"><span>LinkedIn</span><span id="t-li"></span></a>
+      </div>
+    </div>
+
+    <form id="scope" class="rv" novalidate>
+      <div class="row2">
+        <label>Name<input name="name" required placeholder="Your name"></label>
+        <label>Email<input name="email" type="email" required placeholder="you@lab.org"></label>
+      </div>
+      <label>Service
+        <select name="service">
+          <option>Simulation</option><option>Circuit design</option><option>CAD design</option><option>Graphic design</option>
+          <option>HTML website</option><option>Catalogue website</option><option>WhatsApp automation</option><option>Not sure yet</option>
+        </select>
+      </label>
+      <label>The problem, in 8–12 lines
+        <textarea name="msg" required placeholder="What you need, by when, and what files you already have…"></textarea>
+      </label>
+      <div class="send-row">
+        <button class="btn btn-g" type="submit" data-via="wa">Send on WhatsApp</button>
+        <button class="btn btn-o" type="submit" data-via="mail">Send by email</button>
+      </div>
+      <p class="fine">Opens your WhatsApp or mail app with the message filled in. Nothing is stored on this site.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="giant" aria-hidden="true">GRIO</div>
+    <div class="foot">
+      <span>© <span id="yr"></span> GRIO Services · Joe Gabriel</span>
+      <span>Remote · Singapore / India · INR · SGD · USD</span>
+      <a href="#top" class="g">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== EDIT YOUR CONTACT DETAILS HERE ===== */
+const CONFIG = {
+  email: "hello@grio.services",      // your email
+  whatsapp: "910000000000",          // country code + number, digits only
+  whatsappLabel: "+91 00000 00000",
+  linkedin: "https://www.linkedin.com/in/your-handle",
+  linkedinLabel: "/in/your-handle"
+};
+/* ========================================== */
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+const $ = id => document.getElementById(id);
+$("l-email").href = "mailto:" + CONFIG.email; $("t-email").textContent = CONFIG.email;
+$("l-wa").href = "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent("SCOPE"); $("t-wa").textContent = CONFIG.whatsappLabel;
+$("l-li").href = CONFIG.linkedin; $("t-li").textContent = CONFIG.linkedinLabel;
+
+// sticky header border
+const hdr = document.querySelector("header");
+addEventListener("scroll", () => hdr.classList.toggle("scrolled", scrollY > 10), {passive:true});
+
+// mobile menu
+const burger = $("burger"), mm = $("mmenu");
+burger.addEventListener("click", () => { const o = mm.classList.toggle("open"); burger.setAttribute("aria-expanded", o); });
+mm.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { mm.classList.remove("open"); burger.setAttribute("aria-expanded", false); }));
+
+// reveal on scroll
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll(".rv").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
+
+// currency switch
+document.querySelectorAll(".cur button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".cur button").forEach(x => x.classList.toggle("on", x === b));
+  const c = b.dataset.cur;
+  document.querySelectorAll(".price").forEach(p => p.innerHTML = p.dataset[c]);
+}));
+
+// scope form -> WhatsApp / email
+let via = "wa";
+document.querySelectorAll("#scope [type=submit]").forEach(b => b.addEventListener("click", () => via = b.dataset.via));
+$("scope").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target;
+  if (!f.name.value.trim() || !f.msg.value.trim()) { (f.name.value.trim() ? f.msg : f.name).focus(); return; }
+  const body = `SCOPE — ${f.service.value}\n\nName: ${f.name.value}\nEmail: ${f.email.value}\n\n${f.msg.value}`;
+  if (via === "wa") window.open("https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(body), "_blank");
+  else location.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent("SCOPE — " + f.service.value) + "&body=" + encodeURIComponent(body);
+});
+</script>
+</body>
+</html>
